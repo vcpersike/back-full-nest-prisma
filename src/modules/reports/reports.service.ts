@@ -7,39 +7,39 @@ export class ReportsService {
   constructor(private prisma: PrismaService) {}
 
   async create(data: ReportsDTO) {
-    const reportsExists = await this.prisma.reports.findFirst({
+    const reportsExists = await this.prisma.cities.findFirst({
       where: {
-        bar_code: data.bar_code,
+        //bar_code: data.bar_code,
       },
     });
 
     if (reportsExists) {
-      throw new Error('Book already exists');
+      throw new Error('reports already exists');
     }
 
-    const reports = await this.prisma.reports.create({
-      data,
+    const reports = await this.prisma.cities.create({
+      data: undefined,
     });
 
     return reports;
   }
 
   async findAll() {
-    return this.prisma.reports.findMany();
+    return this.prisma.cities.findMany();
   }
 
   async update(id: string, data: ReportsDTO) {
-    const reportsExists = await this.prisma.reports.findUnique({
+    const reportsExists = await this.prisma.cities.findUnique({
       where: {
         id,
       },
     });
 
     if (!reportsExists) {
-      throw new Error('Book does not exists!');
+      throw new Error('reports does not exists!');
     }
 
-    return await this.prisma.reports.update({
+    return await this.prisma.cities.update({
       data,
       where: {
         id,
@@ -48,17 +48,17 @@ export class ReportsService {
   }
 
   async delete(id: string) {
-    const reportsExists = await this.prisma.reports.findUnique({
+    const reportsExists = await this.prisma.cities.findUnique({
       where: {
         id,
       },
     });
 
     if (!reportsExists) {
-      throw new Error('Book does not exists!');
+      throw new Error('reports does not exists!');
     }
 
-    return await this.prisma.reports.delete({
+    return await this.prisma.cities.delete({
       where: {
         id,
       },

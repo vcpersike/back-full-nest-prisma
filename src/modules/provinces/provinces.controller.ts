@@ -7,8 +7,8 @@ import {
   Post,
   Put,
 } from '@nestjs/common';
-import { BookDTO } from './book.dto';
-import { BookService } from './book.service';
+import { BookDTO } from './provinces.dto';
+import { BookService } from './provinces.service';
 
 @Controller('book')
 export class BookController {
