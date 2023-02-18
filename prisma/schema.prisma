@@ -1,0 +1,62 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+model Regions {
+  id          String @id @default(uuid())
+  iso String
+  name String
+
+  @@map("regions")
+}
+
+model Provinces {
+  id          String @id @default(uuid())
+  iso String
+  name String
+  province String
+  lat String
+  long String
+
+  @@map("provinces")
+}
+
+model TotalReport {
+  id          String @id @default(uuid())
+  date String
+  last_update String
+  confirmed String
+  confirmed_diff String
+  deaths String
+  deaths_diff String
+  recovered String
+  recovered_diff String
+  active String
+  active_diff String
+  fatality_rate String
+
+  @@map("totalReport")
+}
+
+model Cities {
+  id          String @id @default(uuid())
+  name String
+  date String
+  fips String
+  lat String
+  long String
+  confirmed String
+  deaths String
+  confirmed_diff String
+  deaths_diff String
+  last_update String
+
+  @@map("cities")
+}
