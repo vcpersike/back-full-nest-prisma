@@ -6,11 +6,11 @@ generator client {
 }
 
 datasource db {
-  provider = "sqlite"
+  provider = "mongodb"
   url      = env("DATABASE_URL")
 }
 model Regions {
-  id          String @id @default(uuid())
+  id       String   @id @default(auto()) @map("_id") @db.ObjectId
   iso String
   name String
 
@@ -18,7 +18,7 @@ model Regions {
 }
 
 model Provinces {
-  id          String @id @default(uuid())
+  id       String   @id @default(auto()) @map("_id") @db.ObjectId
   iso String
   name String
   province String
@@ -29,7 +29,7 @@ model Provinces {
 }
 
 model TotalReport {
-  id          String @id @default(uuid())
+  id       String   @id @default(auto()) @map("_id") @db.ObjectId
   date String
   last_update String
   confirmed String
@@ -46,7 +46,7 @@ model TotalReport {
 }
 
 model Cities {
-  id          String @id @default(uuid())
+  id       String   @id @default(auto()) @map("_id") @db.ObjectId
   name String
   date String
   fips String

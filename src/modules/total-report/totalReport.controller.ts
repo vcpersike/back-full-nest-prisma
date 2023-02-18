@@ -10,7 +10,7 @@ import {
 import { TotalReportDTO } from './totalReport.dto';
 import { TotalReportService } from './totalReport.service';
 
-@Controller('book')
+@Controller('totalReport')
 export class TotalReportController {
   constructor(private readonly bookService: TotalReportService) {}
 

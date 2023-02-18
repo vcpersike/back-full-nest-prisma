@@ -1,45 +1,45 @@
 import { Injectable } from '@nestjs/common';
 import { PrismaService } from 'src/database/PrismaService';
-import { BookDTO } from './provinces.dto';
+import { ProvincesDTO } from './provinces.dto';
 
 @Injectable()
-export class BookService {
+export class ProvincesService {
   constructor(private prisma: PrismaService) {}
 
-  async create(data: BookDTO) {
-    const bookExists = await this.prisma.book.findFirst({
+  async create(data: ProvincesDTO) {
+    const ProvincesExists = await this.prisma.provinces.findFirst({
       where: {
-        bar_code: data.bar_code,
+        //bar_code: data.bar_code,
       },
     });
 
-    if (bookExists) {
-      throw new Error('Book already exists');
+    if (ProvincesExists) {
+      throw new Error('Provinces already exists');
     }
 
-    const book = await this.prisma.book.create({
-      data,
+    const Provinces = await this.prisma.provinces.create({
+      data: undefined,
     });
 
-    return book;
+    return Provinces;
   }
 
   async findAll() {
-    return this.prisma.book.findMany();
+    return this.prisma.provinces.findMany();
   }
 
-  async update(id: string, data: BookDTO) {
-    const bookExists = await this.prisma.book.findUnique({
+  async update(id: string, data: ProvincesDTO) {
+    const ProvincesExists = await this.prisma.provinces.findUnique({
       where: {
         id,
       },
     });
 
-    if (!bookExists) {
-      throw new Error('Book does not exists!');
+    if (!ProvincesExists) {
+      throw new Error('Provinces does not exists!');
     }
 
-    return await this.prisma.book.update({
+    return await this.prisma.provinces.update({
       data,
       where: {
         id,
@@ -48,17 +48,17 @@ export class BookService {
   }
 
   async delete(id: string) {
-    const bookExists = await this.prisma.book.findUnique({
+    const ProvincesExists = await this.prisma.provinces.findUnique({
       where: {
         id,
       },
     });
 
-    if (!bookExists) {
-      throw new Error('Book does not exists!');
+    if (!ProvincesExists) {
+      throw new Error('Provinces does not exists!');
     }
 
-    return await this.prisma.book.delete({
+    return await this.prisma.provinces.delete({
       where: {
         id,
       },

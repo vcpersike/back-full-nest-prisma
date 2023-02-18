@@ -1,6 +1,8 @@
-export type BookDTO = {
+export type ProvincesDTO = {
   id?: string;
-  title: string;
-  description: string;
-  bar_code: string;
+  iso: string;
+  name: string;
+  province: string;
+  lat: string;
+  long: string;
 };

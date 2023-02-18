@@ -7,31 +7,31 @@ import {
   Post,
   Put,
 } from '@nestjs/common';
-import { BookDTO } from './provinces.dto';
-import { BookService } from './provinces.service';
+import { ProvincesDTO } from './provinces.dto';
+import { ProvincesService } from './provinces.service';
 
-@Controller('book')
-export class BookController {
-  constructor(private readonly bookService: BookService) {}
+@Controller('provinces')
+export class ProvincesController {
+  constructor(private readonly provincesService: ProvincesService) {}
 
   @Post()
-  async create(@Body() data: BookDTO) {
-    return this.bookService.create(data);
+  async create(@Body() data: ProvincesDTO) {
+    return this.provincesService.create(data);
   }
 
   @Get()
   async findAll() {
-    return this.bookService.findAll();
+    return this.provincesService.findAll();
   }
 
   // http://localhost:3000/238498239472934
   @Put(':id')
-  async update(@Param('id') id: string, @Body() data: BookDTO) {
-    return this.bookService.update(id, data);
+  async update(@Param('id') id: string, @Body() data: ProvincesDTO) {
+    return this.provincesService.update(id, data);
   }
 
   @Delete(':id')
   async delete(@Param('id') id: string) {
-    return this.bookService.delete(id);
+    return this.provincesService.delete(id);
   }
 }
