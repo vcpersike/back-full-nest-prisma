@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { PrismaService } from 'src/database/PrismaService';
+import { PrismaService } from 'src/database/prisma.service';
 import { RegionsDTO } from './regions.dto';
 
 @Injectable()
@@ -7,21 +7,7 @@ export class RegionsService {
   constructor(private prisma: PrismaService) {}
 
   async create(data: RegionsDTO) {
-    const regionsExists = await this.prisma.regions.findFirst({
-      where: {
-        //bar_code: data.bar_code,
-      },
-    });
-
-    if (regionsExists) {
-      throw new Error('Regions already exists');
-    }
-
-    const Regions = await this.prisma.regions.create({
-      data: undefined,
-    });
-
-    return Regions;
+    return data;
   }
 
   async findAll() {

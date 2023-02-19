@@ -17,6 +17,15 @@ model Regions {
   @@map("regions")
 }
 
+model User {
+  id       String  @id @default(auto()) @map("_id") @db.ObjectId
+  email    String @unique
+  password String
+  name String
+
+  @@map("user")
+}
+
 model Provinces {
   id       String   @id @default(auto()) @map("_id") @db.ObjectId
   iso String
