@@ -7,6 +7,7 @@ import { UserModule } from './user/user.module';
 import { AuthModule } from './auth/auth.module';
 import { APP_GUARD } from '@nestjs/core';
 import { JwtAuthGuard } from './auth/guards/jwt-auth.guard';
+import { MongooseModule } from '@nestjs/mongoose';
 
 @Module({
   imports: [
@@ -16,6 +17,9 @@ import { JwtAuthGuard } from './auth/guards/jwt-auth.guard';
     ReportsModule,
     RegionsModule,
     ProvincesModule,
+    MongooseModule.forRoot(
+      'mongodb+srv://devvictorpersike:OpAO7yprMKXr6A9D@testefullcycle.ozfpzz3.mongodb.net/test',
+    ),
   ],
   controllers: [],
   providers: [
