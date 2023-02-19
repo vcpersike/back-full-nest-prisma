@@ -19,4 +19,9 @@ export class RegionsController {
   async create(@Body() data: RegionsDTO) {
     return this.regionsService.create(data);
   }
+
+  @Get()
+  async findAll() {
+    return this.regionsService.findAll();
+  }
 }
