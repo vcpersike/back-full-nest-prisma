@@ -14,12 +14,10 @@ import { MongooseModule } from '@nestjs/mongoose';
     UserModule,
     AuthModule,
     TotalReportModule,
-    ReportsModule,
     RegionsModule,
+    ReportsModule,
     ProvincesModule,
-    MongooseModule.forRoot(
-      'mongodb+srv://devvictorpersike:OpAO7yprMKXr6A9D@testefullcycle.ozfpzz3.mongodb.net/test',
-    ),
+    MongooseModule.forRoot(process.env.DATABASE_URL),
   ],
   controllers: [],
   providers: [
